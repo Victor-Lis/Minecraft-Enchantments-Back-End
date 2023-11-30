@@ -12,6 +12,7 @@ body {
   background-color: #2020;
   background-image: url("./Images/minecraftbg.jpg");
   min-height: 100dvh;
+  /* padding: 5% 0; */
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -22,7 +23,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  > input{
+  > :where(input) {
 
     border-radius: 2px;
     background-color: #8B8B8B;
@@ -116,14 +117,15 @@ body {
   }
 }
 
-.encantamentos{
+:where(.encantamentos, .selectable-card){
 
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 5%;
 
   > .card{
 
@@ -131,6 +133,13 @@ body {
     color: #000;
     text-transform: uppercase;
     text-align: center;
+    width: 5%;
+
+    > img{
+
+      width: 100%;
+
+    }
 
     > h3{
 

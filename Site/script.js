@@ -34,15 +34,42 @@ async function getEncatamentos(){
 
             document.querySelector(".encantamentos").innerHTML += `
                 <div class="card">
-                    <h3> ${inputValue[index]} </h3>
+                    <h3> ${inputValue[index] != " "? inputValue[index]: '-'} </h3>
                     <img src='${img}'>
                 </div>
             `
-
+            
         })
 
     }
 
+}   
+
+function letter(l){
+
+    console.log(l)
+
 }
+
+document.querySelector("#enchantment-table").addEventListener("dragstart", (e) => {  
+
+    let alphabetKeys = Object.keys(alphabet)
+    alphabetKeys.map((letter) => {
+
+        document.querySelector(".selectable-card").innerHTML += `<div class="card" onclick='letter("${letter}")'><img src='${alphabet[letter]}'></div>`
+
+    })
+
+    if(document.querySelector("body").style.backgroundImage == `url("./Images/library.svg")`){
+        document.querySelector(".selectable-card").style.display = "none"
+        document.querySelector("input").style.display = "inherit"
+        document.querySelector("body").style.backgroundImage = `url("./Images/minecraftbg.jpg")`
+    }else{
+        document.querySelector(".selectable-card").style.display = "inherit"
+        document.querySelector("input").style.display = "none"
+        document.querySelector("body").style.backgroundImage = `url("./Images/library.svg")`
+    }
+
+})
 
 getAlphabet()

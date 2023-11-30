@@ -41,7 +41,11 @@ app.use('/letter-to-enchantment', (req, res) => {
     let newText = []
     for (let i = 0; i < text.length; i++) {
 
-      newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/${text[i].toUpperCase()}.png`)
+      if(text[i] != " "){
+        newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/${text[i].toUpperCase()}.png`)
+      }else{
+        newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Space.png`)
+      }
 
     }
     res.send(newText)
