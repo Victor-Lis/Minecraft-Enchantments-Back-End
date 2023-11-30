@@ -1,3 +1,8 @@
+const body = document.querySelector("body")
+const input = document.querySelector("input")
+const encantamentos = document.querySelector(".encantamentos")
+const selectableCard = document.querySelector(".selectable-card")
+const enchantmentTable = document.querySelector("#enchantment-table")
 let alphabet
 
 async function getAlphabet() {
@@ -17,62 +22,75 @@ async function getAlphabet() {
 
 async function getEncatamentos() {
 
-    document.querySelector("#enchantment-table").classList.add("spin")
+    enchantmentTable.classList.add("spin")
 
-    setInterval(() => { document.querySelector("#enchantment-table").classList.remove("spin") }, 2500)
+    setInterval(() => { enchantmentTable.classList.remove("spin") }, 2500)
 
-    let inputValue = document.querySelector("input").value
-    let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=${inputValue}`)
-        .then(res => res.json())
-        .catch(e => console.log(e))
+    const regex = new RegExp("[\\W]", "g");
 
-    if (data) {
+    // Verifique se o texto digitado pelo usuário contém caracteres especiais
+    if (regex.test(input.value)) {
+        // Impeça que o texto seja inserido no campo do formulário
+        input.value = input.value.replace(regex, "");
+        alert("Não utilize caractéres especiais!")
+    } else {
 
-        document.querySelector(".encantamentos").innerHTML = ""
+        let inputValue = input.value
+        let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=${inputValue}`)
+            .then(res => res.json())
+            .catch(e => console.log(e))
 
-        data.map((img, index) => {
+        if (data) {
 
-            document.querySelector(".encantamentos").innerHTML += `
+            encantamentos.innerHTML = ""
+
+            data.map((img, index) => {
+
+                encantamentos.innerHTML += `
                 <div class="card">
                     <h3> ${inputValue[index] != " " ? inputValue[index] : '-'} </h3>
                     <img src='${img}'>
                 </div>
             `
 
-        })
+            })
 
+        }
+        
     }
 
 }
 
 function letter(l) {
 
-    document.querySelector(".encantamentos").innerHTML += `
+    encantamentos.innerHTML += `
     <div class="card">
         <h3> ${l} </h3>
     </div>
     `
 }
 
-document.querySelector("#enchantment-table").addEventListener("dragstart", (e) => {
+enchantmentTable.addEventListener("dragstart", (e) => {
 
-    document.querySelector(".selectable-card").innerHTML = " "
-    document.querySelector(".encantamentos").innerHTML = " "
+    selectableCard.innerHTML = " "
+    encantamentos.innerHTML = " "
     let alphabetKeys = Object.keys(alphabet)
     alphabetKeys.map((letter) => {
 
-        document.querySelector(".selectable-card").innerHTML += `<div class="card" onclick='letter("${letter}")'><img src='${alphabet[letter]}'></div>`
+        selectableCard.innerHTML += `<div class="card" onclick='letter("${letter}")'><img src='${alphabet[letter]}'></div>`
 
     })
 
-    if (document.querySelector("body").style.backgroundImage == `url("./Images/library.svg")`) {
-        document.querySelector(".selectable-card").style.display = "none"
-        document.querySelector("input").style.display = "inherit"
-        document.querySelector("body").style.backgroundImage = `url("./Images/minecraftbg.jpg")`
+    if (body.style.backgroundImage == `url("./Images/library.svg")`) {
+        enchantmentTable.src = "./Images/enchantment table.png"
+        selectableCard.style.display = "none"
+        input.style.display = "inherit"
+        body.style.backgroundImage = `url("./Images/minecraftbg.jpg")`
     } else {
-        document.querySelector(".selectable-card").style.display = "inherit"
-        document.querySelector("input").style.display = "none"
-        document.querySelector("body").style.backgroundImage = `url("./Images/library.svg")`
+        enchantmentTable.src = "./Images/book stand.png"
+        selectableCard.style.display = "inherit"
+        input.style.display = "none"
+        body.style.backgroundImage = `url("./Images/library.svg")`
     }
 
 })
@@ -80,8 +98,8 @@ document.querySelector("#enchantment-table").addEventListener("dragstart", (e) =
 document.addEventListener('keydown', (e) => {
 
     if (e.keyCode == 82) {
-        if (document.querySelector("body").style.backgroundImage == `url("./Images/library.svg")`) {
-            document.querySelector(".encantamentos").innerHTML = "<p></p>"
+        if (body.style.backgroundImage == `url("./Images/library.svg")`) {
+            encantamentos.innerHTML = "<p></p>"
         }
     }
 
