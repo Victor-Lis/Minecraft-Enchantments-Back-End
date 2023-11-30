@@ -149,4 +149,18 @@ body {
 
   }
 
+  
+}
+
+.selectable-card{
+
+  > .card{
+
+    &:hover{
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+  }
+
 }
