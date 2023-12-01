@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "npm i dependencies",
-    "test": "nodemon start"
+    "test": "nodemon start",
+    "production": "node src/index.js"
   },
   "author": "Victor-Lis",
   "license": "ISC",
