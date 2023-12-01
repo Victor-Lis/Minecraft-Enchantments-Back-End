@@ -15,7 +15,7 @@ async function getAlphabet() {
     if (data) {
 
         alphabet = data
-        console.log(alphabet)
+        // console.log(alphabet)
 
     }
 
@@ -23,47 +23,53 @@ async function getAlphabet() {
 
 async function getEncatamentos() {
 
-    enchantmentTable.classList.add("spin")
+    if (!enchantmentTable.classList.contains("spin")) {
+        
+        if (body.style.backgroundImage != `url("./Images/library.png")`) {
+            enchantmentTable.classList.add("spin")
+    
+            setInterval(() => { enchantmentTable.classList.remove("spin") }, 2500)
 
-    setInterval(() => { enchantmentTable.classList.remove("spin") }, 2500)
+            const regex = new RegExp("[\\W]", "g");
 
-    if (body.style.backgroundImage != `url("./Images/library.png")`) {
+            // Verifique se o texto digitado pelo usuário contém caracteres especiais
+            if (regex.test(input.value)) {
+                // Impeça que o texto seja inserido no campo do formulário
+                input.value = input.value.replace(regex, "");
+                alert("Não utilize caractéres especiais!")
+            } else {
 
-        const regex = new RegExp("[\\W]", "g");
+                let inputValue = input.value
+                let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=${inputValue}`)
+                    .then(res => res.json())
+                // .catch(e => console.log(e))
 
-        // Verifique se o texto digitado pelo usuário contém caracteres especiais
-        if (regex.test(input.value)) {
-            // Impeça que o texto seja inserido no campo do formulário
-            input.value = input.value.replace(regex, "");
-            alert("Não utilize caractéres especiais!")
-        } else {
+                if (data) {
 
-            let inputValue = input.value
-            let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=${inputValue}`)
-                .then(res => res.json())
-                .catch(e => console.log(e))
+                    encantamentos.innerHTML = ""
 
-            if (data) {
+                    data.map((img, index) => {
 
-                encantamentos.innerHTML = ""
-
-                data.map((img, index) => {
-
-                    encantamentos.innerHTML += `
+                        encantamentos.innerHTML += `
                 <div class="card">
                     <h3> ${inputValue[index] != " " ? inputValue[index] : '-'} </h3>
                     <img src='${img}'>
                 </div>
             `
 
-                })
+                    })
+
+                }
 
             }
-
+        } else {
+            enchantmentTable.classList.add("spin")
+    
+            setInterval(() => { enchantmentTable.classList.remove("spin") }, 2500)
+            
+            encantamentos.innerHTML = enchantmentTraduct
+            enchantmentTraduct = "";
         }
-    }else{  
-        encantamentos.innerHTML = enchantmentTraduct
-        enchantmentTraduct = "";
     }
 
 }
@@ -79,7 +85,7 @@ function letter(l) {
 
 enchantmentTable.addEventListener("dragstart", (e) => {
 
-    enchantmentTraduct=""
+    enchantmentTraduct = ""
     selectableCard.innerHTML = " "
     encantamentos.innerHTML = " "
     let alphabetKeys = Object.keys(alphabet)

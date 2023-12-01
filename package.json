@@ -4,6 +4,7 @@
   "description": "Esta é uma API para ajudar a entender os encantamentos do Minecraft!",
   "main": "src/index.js",
   "scripts": {
+    "build": "npm i dependencies",
     "test": "nodemon start"
   },
   "author": "Victor-Lis",
