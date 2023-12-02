@@ -24,10 +24,10 @@ async function getAlphabet() {
 async function getEncatamentos() {
 
     if (!enchantmentTable.classList.contains("spin")) {
-        
-        if (body.style.backgroundImage != `url("./Images/library.png")`) {
+
+        if (body.style.backgroundImage != `url("./Images/bookshelf.jpeg")`) {
             enchantmentTable.classList.add("spin")
-    
+
             setInterval(() => { enchantmentTable.classList.remove("spin") }, 2500)
 
             const regex = new RegExp("[\\W]", "g");
@@ -64,9 +64,9 @@ async function getEncatamentos() {
             }
         } else {
             enchantmentTable.classList.add("spin")
-    
+
             setInterval(() => { enchantmentTable.classList.remove("spin") }, 2500)
-            
+
             encantamentos.innerHTML = enchantmentTraduct
             enchantmentTraduct = "";
         }
@@ -95,24 +95,40 @@ enchantmentTable.addEventListener("dragstart", (e) => {
 
     })
 
-    if (body.style.backgroundImage == `url("./Images/library.png")`) {
-        enchantmentTable.src = "./Images/enchantment table.png"
+    if (body.style.backgroundImage == `url("./Images/bookshelf.jpeg")`) {
+        enchantmentTable.classList.add("trading")
+        setTimeout(() => {
+
+            enchantmentTable.src = "./Images/enchantment table.png"
+
+        }, 62.5)
         selectableCard.style.display = "none"
         input.style.display = "inherit"
         body.style.backgroundImage = `url("./Images/minecraftbg.jpg")`
     } else {
-        enchantmentTable.src = "./Images/book stand.png"
+        enchantmentTable.classList.add("trading")
+        setTimeout(() => {
+
+            enchantmentTable.src = "./Images/book stand.png"
+
+        }, 62.5)
         selectableCard.style.display = "inherit"
         input.style.display = "none"
-        body.style.backgroundImage = `url("./Images/library.png")`
+        body.style.backgroundImage = `url("./Images/bookshelf.jpeg")`
     }
 
+
+    setTimeout(() => {
+
+        enchantmentTable.classList.remove("trading")
+
+    }, 125)
 })
 
 document.addEventListener('keydown', (e) => {
 
     if (e.keyCode == 82) {
-        if (body.style.backgroundImage == `url("./Images/library.png")`) {
+        if (body.style.backgroundImage == `url("./Images/bookshelf.jpeg")`) {
             encantamentos.innerHTML = "<p></p>"
         }
     }

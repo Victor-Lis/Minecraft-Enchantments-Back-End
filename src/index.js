@@ -41,7 +41,7 @@ app.use('/letter-to-enchantment', (req, res) => {
     let newText = []
     for (let i = 0; i < text.length; i++) {
 
-      if(text[i] != " "){
+      if(text[i] != " " && text[i] != "-" && text[i] != "_"){
         newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/${text[i].toUpperCase()}.png`)
       }else{
         newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Space.png`)
