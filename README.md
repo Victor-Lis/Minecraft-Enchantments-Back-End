@@ -63,7 +63,7 @@ let codeToEnchantCaracter = {
 ### Caracteres em códigos
 
 <div align="center">
-  <div>
+  <div style="border-bottom: 2px solid #fff">
     <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/A.png">
     <p>11</p>
   </div>
