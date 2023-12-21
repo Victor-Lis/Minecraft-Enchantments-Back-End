@@ -88,11 +88,42 @@ let codeToEnchantCaracter = {
  </div>
   <div>
    <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/G.png">
-   <p>17/p>
+   <p>17</p>
  </div>
  <div>
    <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/H.png">
    <p>18</p>
+ </div>
+  <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/I.png">
+   <p>19</p>
+ </div>
+ <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/J.png">
+   <p>20</p>
+ </div>
+  <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/K.png">
+   <p>21/p>
+ </div>
+ <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/L.png">
+   <p>22</p>
+ </div><div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/M.png">
+   <p>23</p>
+ </div>
+ <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/N.png">
+   <p>24</p>
+ </div>
+  <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/O.png">
+   <p>25</p>
+ </div>
+ <div>
+   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/P.png">
+   <p>26</p>
  </div>
 </div>
 
