@@ -65,7 +65,6 @@ let codeToEnchantCaracter = {
 <div align="center">
   <div>
     <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/A.png">
-    <p>11</p>
+    <h1>11</h1>
   </div>
-  <h1></h1>
 </div>
