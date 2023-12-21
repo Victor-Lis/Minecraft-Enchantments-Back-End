@@ -67,4 +67,16 @@ let codeToEnchantCaracter = {
     <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/A.png">
     <h3>11</h3>
   </div>
+    <div>
+    <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/B.png">
+    <h3>12</h3>
+  </div>
+    <div>
+    <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/C.png">
+    <h3>13</h3>
+  </div>
+    <div>
+    <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/D.png">
+    <h3>14</h3>
+  </div>
 </div>
