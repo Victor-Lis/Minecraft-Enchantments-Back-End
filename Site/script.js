@@ -48,6 +48,7 @@ async function letterToEnchant() {
 async function concatCode(c, img) {
     code += c
 
+    console.log(code)
     if(encantamentos.innerHTML.includes("<h2>")){
         encantamentos.innerHTML = `` 
     }
