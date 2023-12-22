@@ -114,7 +114,9 @@ if (!!codes && codes.length > 0 && codes.length % 2 == 0) {
 ```
 
 #### Significado de cada código
-![Table](https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/CodeToCharacter.jpg)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/CodeToCharacter.jpg">
+</div>
 
 ### Rota para traduzir Letras para os Caractéres do Minecraft
 
