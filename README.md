@@ -1,5 +1,5 @@
 
-### Declaração dos objetos de referência
+## Declaração dos objetos de referência
 ```js
 let letters = {
   "A": "https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/A.png",
@@ -61,12 +61,13 @@ let codeToEnchantCaracter = {
 }
 ```
 
-### Rota para traduzir os Caractéres do Minecraft para Letras
 
-#### Como funciona?
+## Rota para traduzir os Caractéres do Minecraft para Letras
+
+### Como funciona?
 Eu atribui um código de 2 digitos para cada caractere, logo é necessario basicamente passar uma sequência de códigos respectivos para cada caractere, retribuindo a tradução, segue um exemplo e a função.
 
-#### Exemplo
+### Exemplo
 Nesse caso irei passar o seguinte código: 1924161924193035, respectivo ao encantamento "infinity" ou em português "infinidade".
 ```js
 let data = await fetch(`http://localhost:4000/code-to-caracter?codes=1924161924193035`)
@@ -77,6 +78,7 @@ if(data.data.length){
 }
 ```
 
+### Rota
 ```js
 
 app.use('/code-to-caracter', (req, res) => {
@@ -113,17 +115,18 @@ if (!!codes && codes.length > 0 && codes.length % 2 == 0) {
 
 ```
 
-#### Significado de cada código
+### Significado de cada código
 <div align="center">
   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/CodeToCharacter.jpg">
 </div>
 
-### Rota para traduzir Letras para os Caractéres do Minecraft
 
-#### Como funciona?
+## Rota para traduzir Letras para os Caractéres do Minecraft
+
+### Como funciona?
 Simples, eu atribui as Letras como keys de um objeto e o respectivo caractere na frente, segue um exemplo e a função.
 
-#### Exemplo
+### Exemplo
 Nesse caso irei escrever "infinity" o mesmo encantamento de cima.
 
 ```js
@@ -136,6 +139,7 @@ async function letterToEnchant() {
 }
 ```
 
+### Rota
 ```js
 app.use('/letter-to-enchantment', (req, res) => {
   let { text } = req.query
@@ -156,6 +160,43 @@ app.use('/letter-to-enchantment', (req, res) => {
   }
 });
 ```
+
+
+## Rota para receber um objeto das imagens e de seus códigos
+
+### Como funciona?
+Essa é a rota mais simples, sem lógica alguma, ela simplesmente retorna um objeto com as imagens como "Keys" do objeto e os códigos como "Values.
+
+### Exemplo
+```js
+async function letterToEnchant() {
+    let data = await fetch(`http://localhost:4000/images-codes`)
+        .then(res => res.json())
+        .catch(e => console.log(e))
+
+    if (data) {
+      console.log(data) // O resultado será o link das respectivas imagens dos caractéres
+    }
+}
+```
+
+### Rota
+```js
+app.use('/images-codes', (req, res) => {
+
+  let images = Object.values(letters)
+  let codes = Object.keys(codeToEnchantCaracter)
+  
+  const newObject = {};
+  for (let i = 0; i < images.length; i++) {
+    newObject[images[i]] = codes[i];
+  }  
+
+  res.send(JSON.stringify(newObject))
+
+})
+```
+
 
 ## Projeto na prática
 
