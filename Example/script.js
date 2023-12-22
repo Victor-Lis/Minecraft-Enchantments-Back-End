@@ -9,7 +9,7 @@ let canSpin = true;
 
 async function getAlphabet() {
 
-    let data = await fetch(`http://localhost:4000/images-codes`)
+    let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/images-codes`)
         .then(res => res.json())
         .catch(e => console.log(e))
 
@@ -24,7 +24,7 @@ async function getAlphabet() {
 
 async function letterToEnchant() {
     let inputValue = input.value
-    let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=${inputValue}`)
+    let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/letter-to-enchantment?text=${inputValue}`)
         .then(res => res.json())
         .catch(e => console.log(e))
 
@@ -66,7 +66,7 @@ async function concatCode(c, img) {
 
 async function enchantToLetter() {
 
-    let data = await fetch(`http://localhost:4000/code-to-caracter?codes=${code}`)
+    let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/code-to-caracter?codes=${code}`)
         .then(res => res.json())
         .catch(e => console.log(e))
 
@@ -147,10 +147,6 @@ enchantmentTable.addEventListener("dragstart", (e) => {
             canSpin = true;
         }, 2500);
     }
-})
-
-document.addEventListener('keydown', (e) => {
-
 })
 
 getAlphabet()
