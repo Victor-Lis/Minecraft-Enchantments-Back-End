@@ -93,7 +93,10 @@ async function enchantToLetter() {
 }
 
 enchantmentTable.addEventListener("dragstart", (e) => {
+    change()
+})
 
+function change(){
     if (canSpin) {
         canSpin = false;
         let onclick = enchantmentTable.attributes["onclick"].nodeValue
@@ -148,6 +151,6 @@ enchantmentTable.addEventListener("dragstart", (e) => {
             canSpin = true;
         }, 2500);
     }
-})
+}
 
 getAlphabet()
