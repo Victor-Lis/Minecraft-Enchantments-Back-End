@@ -61,48 +61,48 @@ let codeToEnchantCaracter = {
 }
 ```
 
-### Rota para traduzir os caracteres do Minecraft para Letras
+### Rota para traduzir os Caractéres do Minecraft para Letras
 
 #### Como funciona?
 Eu atribui um código de 2 digitos para cada caractere, logo é necessario basicamente passar uma sequência de códigos respectivos para cada caractere, retribuindo a tradução, segue um exemplo e a função.
 
 #### Exemplo
-Nesse caso irei passar o seguinte código: 1924161924193035, respectivo ao encantamento "infinity" ou em português "infinidade";
+Nesse caso irei passar o seguinte código: 1924161924193035, respectivo ao encantamento "infinity" ou em português "infinidade".
 ```js
-     let data = await fetch(`http://localhost:4000/code-to-caracter?codes=1924161924193035`)
-       .then(res => res.json())
+let data = await fetch(`http://localhost:4000/code-to-caracter?codes=1924161924193035`)
+  .then(res => res.json())
       
-     if(data.data.length){
-       console.log(data.data) // INFINITY
-     }
+if(data.data.length){
+  console.log(data.data) // INFINITY
+}
 ```
 
 ```js
 
-  app.use('/code-to-caracter', (req, res) => {
-  let { codes } = req.query
-  if (!!codes && codes.length > 0 && codes.length % 2 == 0) {
+app.use('/code-to-caracter', (req, res) => {
+let { codes } = req.query
+if (!!codes && codes.length > 0 && codes.length % 2 == 0) {
     
-    let traduction = "";
-    let lastCode;
-    for(let i = 0; i < codes.length; i++){
+  let traduction = "";
+  let lastCode;
+  for(let i = 0; i < codes.length; i++){
 
-      if(i % 2 == 0){
+    if(i % 2 == 0){
 
-        lastCode = codes[i];
+      lastCode = codes[i];
 
-      }else{
+    }else{
 
-        lastCode+=codes[i];
+      lastCode+=codes[i];
 
-      }
+    }
 
-      if(lastCode.length == 2){
+    if(lastCode.length == 2){
 
-        traduction += codeToEnchantCaracter[lastCode];
-        lastCode = '';
+      traduction += codeToEnchantCaracter[lastCode];
+      lastCode = '';
 
-      }
+    }
 
     }
     res.send(JSON.stringify({data: traduction}))
@@ -226,4 +226,41 @@ Nesse caso irei passar o seguinte código: 1924161924193035, respectivo ao encan
   </div>
 </div>
 
+### Rota para traduzir Letras para os Caractéres do Minecraft
 
+#### Como funciona?
+Simples, eu atribui as Letras como keys de um objeto e o respectivo caractere na frente, segue um exemplo e a função.
+
+#### Exemplo
+Nesse caso irei escrever "infinity" o mesmo encantamento de cima.
+
+```js
+async function letterToEnchant() {
+    let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=INFINITY`)
+        .then(res => res.json())
+        .catch(e => console.log(e))
+
+    console.log(data) // O resultado será o link das respectivas imagens dos caractéres
+}
+```
+
+```js
+app.use('/letter-to-enchantment', (req, res) => {
+  let { text } = req.query
+  if (!!text && text.length > 0) {
+    let newText = []
+    for (let i = 0; i < text.length; i++) {
+
+      if(text[i] != " " && text[i] != "-" && text[i] != "_"){
+        newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/${text[i].toUpperCase()}.png`)
+      }else{
+        newText.push(`https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Space.png`)
+      }
+
+    }
+    res.send(newText)
+  }else{
+    res.sendStatus(502)
+  }
+});
+```
