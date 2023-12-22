@@ -1,5 +1,17 @@
+# Minecraft-Enchants
 
-### Declaração dos objetos de referência
+A ideia desse projeto surgiu enquanto eu jogava Minecraft com meus amigos e parei para pensar sobre a tradução dos encantamentos do jogo, então cheguei na ideia de criar uma API para tal feito.
+# Desafios
+
+Alguns dos meus desafios foram:
+- Trabalhar com os caracteres dos encantamentos;
+- Criar um código para cada caractere;
+- Editar a imagem de cada caractere;
+- Traduzir cada caractere para uma letra;
+# Aprendizados
+Por final aprendi algumas coisas interessantes como: 
+
+## Declaração dos objetos de referência
 ```js
 let letters = {
   "A": "https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/A.png",
@@ -61,12 +73,13 @@ let codeToEnchantCaracter = {
 }
 ```
 
-### Rota para traduzir os Caractéres do Minecraft para Letras
 
-#### Como funciona?
+## Rota para traduzir os Caractéres do Minecraft para Letras
+
+### Como funciona?
 Eu atribui um código de 2 digitos para cada caractere, logo é necessario basicamente passar uma sequência de códigos respectivos para cada caractere, retribuindo a tradução, segue um exemplo e a função.
 
-#### Exemplo
+### Exemplo
 Nesse caso irei passar o seguinte código: 1924161924193035, respectivo ao encantamento "infinity" ou em português "infinidade".
 ```js
 let data = await fetch(`http://localhost:4000/code-to-caracter?codes=1924161924193035`)
@@ -77,6 +90,7 @@ if(data.data.length){
 }
 ```
 
+### Rota
 ```js
 
 app.use('/code-to-caracter', (req, res) => {
@@ -113,125 +127,18 @@ if (!!codes && codes.length > 0 && codes.length % 2 == 0) {
 
 ```
 
-#### Significado de cada código
-
+### Significado de cada código
 <div align="center">
-   <div>
-     <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/A.png">
-     <p>11</p>
-   </div>
-   <div>
-     <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/B.png">
-     <p>12</p>
-   </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/C.png">
-   <p>13</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/D.png">
-   <p>14</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/E.png">
-   <p>15</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/F.png">
-   <p>16</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/G.png">
-   <p>17</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/H.png">
-   <p>18</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/I.png">
-   <p>19</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/J.png">
-   <p>20</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/K.png">
-   <p>21</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/L.png">
-   <p>22</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/M.png">
-   <p>23</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/N.png">
-   <p>24</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/O.png">
-   <p>25</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/P.png">
-   <p>26</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Q.png">
-   <p>27</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/R.png">
-   <p>28</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/S.png">
-   <p>29</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/T.png">
-   <p>30</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/U.png">
-   <p>31</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/V.png">
-   <p>32</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/W.png">
-   <p>33</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/X.png">
-   <p>34</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Y.png">
-   <p>35</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Z.png">
-   <p>36</p>
-  </div>
-  <div>
-   <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Space.png">
-   <p>37</p>
-  </div>
+  <img src="https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/CodeToCharacter.jpg">
 </div>
 
-### Rota para traduzir Letras para os Caractéres do Minecraft
 
-#### Como funciona?
+## Rota para traduzir Letras para os Caractéres do Minecraft
+
+### Como funciona?
 Simples, eu atribui as Letras como keys de um objeto e o respectivo caractere na frente, segue um exemplo e a função.
 
-#### Exemplo
+### Exemplo
 Nesse caso irei escrever "infinity" o mesmo encantamento de cima.
 
 ```js
@@ -244,6 +151,7 @@ async function letterToEnchant() {
 }
 ```
 
+### Rota
 ```js
 app.use('/letter-to-enchantment', (req, res) => {
   let { text } = req.query
@@ -264,6 +172,43 @@ app.use('/letter-to-enchantment', (req, res) => {
   }
 });
 ```
+
+
+## Rota para receber um objeto das imagens e de seus códigos
+
+### Como funciona?
+Essa é a rota mais simples, sem lógica alguma, ela simplesmente retorna um objeto com as imagens como "Keys" do objeto e os códigos como "Values.
+
+### Exemplo
+```js
+async function letterToEnchant() {
+    let data = await fetch(`http://localhost:4000/images-codes`)
+        .then(res => res.json())
+        .catch(e => console.log(e))
+
+    if (data) {
+      console.log(data) // O resultado será o link das respectivas imagens dos caractéres
+    }
+}
+```
+
+### Rota
+```js
+app.use('/images-codes', (req, res) => {
+
+  let images = Object.values(letters)
+  let codes = Object.keys(codeToEnchantCaracter)
+  
+  const newObject = {};
+  for (let i = 0; i < images.length; i++) {
+    newObject[images[i]] = codes[i];
+  }  
+
+  res.send(JSON.stringify(newObject))
+
+})
+```
+
 
 ## Projeto na prática
 
