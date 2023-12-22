@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-const path = require('path')
-const fs = require('fs');
 
 const cors = require('cors');
 app.use(cors());
@@ -33,6 +31,37 @@ let letters = {
   "X": "https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/X.png",
   "Y": "https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Y.png",
   "Z": "https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Z.png",
+  "_": "https://raw.githubusercontent.com/Victor-Lis/Minecraft-Enchantments/main/src/images/Space.png"
+}
+
+let codeToEnchantCaracter = {
+  11: "A",
+  12: "B",
+  13: "C",
+  14: "D",
+  15: "E",
+  16: "F",
+  17: "G",
+  18: "H",
+  19: "I",
+  20: "J",
+  21: "K",
+  22: "L",
+  23: "M",
+  24: "N",
+  25: "O",
+  26: "P",
+  27: "Q",
+  28: "R",
+  29: "S",
+  30: "T",
+  31: "U",
+  32: "V",
+  33: "W",
+  34: "X",
+  35: "Y",
+  36: "Z",
+  37: " ",
 }
 
 app.use('/letter-to-enchantment', (req, res) => {
@@ -50,13 +79,53 @@ app.use('/letter-to-enchantment', (req, res) => {
     }
     res.send(newText)
   }else{
-    res.sendStatus(500)
+    res.sendStatus(502)
   }
 });
 
-app.use('/all', (req, res) => {
+app.use('/code-to-caracter', (req, res) => {
+  let { codes } = req.query
+  if (!!codes && codes.length > 0 && codes.length % 2 == 0) {
+    
+    let traduction = "";
+    let lastCode;
+    for(let i = 0; i < codes.length; i++){
 
-  res.send(letters)
+      if(i % 2 == 0){
+
+        lastCode = codes[i];
+
+      }else{
+
+        lastCode+=codes[i];
+
+      }
+
+      if(lastCode.length == 2){
+
+        traduction += codeToEnchantCaracter[lastCode];
+        lastCode = '';
+
+      }
+
+    }
+    res.send(JSON.stringify({data: traduction}))
+  }else{
+    res.sendStatus(502)
+  }
+});
+
+app.use('/images-codes', (req, res) => {
+
+  let images = Object.values(letters)
+  let codes = Object.keys(codeToEnchantCaracter)
+  
+  const newObject = {};
+  for (let i = 0; i < images.length; i++) {
+    newObject[images[i]] = codes[i];
+  }  
+
+  res.send(JSON.stringify(newObject))
 
 })
 
