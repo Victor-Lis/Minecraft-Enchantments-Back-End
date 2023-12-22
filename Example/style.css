@@ -34,7 +34,7 @@ body {
     padding: 5px 10px;  
     text-transform: uppercase;
     text-align: center;
-    min-width: 100px;
+    min-width: 250px;
     min-height: 25px;
     font-size: 1.25rem;
 
@@ -55,6 +55,19 @@ body {
       cursor: pointer;
 
     }
+
+  }
+
+  > button{
+
+      padding: 5px 10px;  
+      margin: 10px 0;
+      display: none;
+
+      &:hover{
+        cursor: pointer;
+        opacity: .7;
+      }
 
   }
 
@@ -218,4 +231,16 @@ body {
 
   animation: trading-image .125s linear;
 
+}
+
+@media (max-width: 600px) {
+  body{
+
+    > button{
+
+      display: inherit;
+
+    }
+
+  }
 }

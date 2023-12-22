@@ -27,6 +27,7 @@ async function letterToEnchant() {
     let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/letter-to-enchantment?text=${inputValue}`)
         .then(res => res.json())
         .catch(e => console.log(e))
+    encantamentos.innerHTML = ""    
 
     if (data) {
 
