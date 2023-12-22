@@ -1,3 +1,15 @@
+# Minecraft-Enchants
+
+A ideia desse projeto surgiu enquanto eu jogava Minecraft com meus amigos e parei para pensar sobre a tradução dos encantamentos do jogo, então cheguei na ideia de criar uma API para tal feito.
+# Desafios
+
+Alguns dos meus desafios foram:
+- Trabalhar com os caracteres dos encantamentos;
+- Criar um código para cada caractere;
+- Editar a imagem de cada caractere;
+- Traduzir cada caractere para uma letra;
+# Aprendizados
+Por final aprendi algumas coisas interessantes como: 
 
 ## Declaração dos objetos de referência
 ```js
