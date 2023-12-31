@@ -1,6 +1,6 @@
 # Minecraft-Enchants-Back-End
 
-A ideia desse projeto surgiu enquanto eu jogava Minecraft com meus amigos e parei para pensar sobre a tradução dos encantamentos do jogo, então cheguei na ideia de criar uma API para tal feito.
+A ideia desse projeto surgiu enquanto eu jogava Minecraft com meus amigos e parei para pensar sobre a tradução dos encantamentos do jogo, então cheguei na ideia de criar uma API para tal feito. Este é o Back-End do projeto, caso queira ver a aplicação com detalhes no Front-End, aqui está o código do [Front-End](https://github.com/Victor-Lis/Minecraft-Enchantments-Back-End)
 # Desafios
 
 Alguns dos meus desafios foram:
