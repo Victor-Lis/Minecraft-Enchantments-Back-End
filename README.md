@@ -82,7 +82,7 @@ Eu atribui um código de 2 digitos para cada caractere, logo é necessario basic
 ### Exemplo
 Nesse caso irei passar o seguinte código: 1924161924193035, respectivo ao encantamento "infinity" ou em português "infinidade".
 ```js
-let data = await fetch(`http://localhost:4000/code-to-caracter?codes=1924161924193035`)
+let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/code-to-caracter?codes=1924161924193035`)
   .then(res => res.json())
       
 if(data.data.length){
@@ -143,7 +143,7 @@ Nesse caso irei escrever "infinity" o mesmo encantamento de cima.
 
 ```js
 async function letterToEnchant() {
-    let data = await fetch(`http://localhost:4000/letter-to-enchantment?text=INFINITY`)
+    let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/letter-to-enchantment?text=INFINITY`)
         .then(res => res.json())
         .catch(e => console.log(e))
 
@@ -182,7 +182,7 @@ Essa é a rota mais simples, sem lógica alguma, ela simplesmente retorna um obj
 ### Exemplo
 ```js
 async function letterToEnchant() {
-    let data = await fetch(`http://localhost:4000/images-codes`)
+    let data = await fetch(`https://minecraft-enchantments-api-by-dev-victor.onrender.com/images-codes`)
         .then(res => res.json())
         .catch(e => console.log(e))
 
